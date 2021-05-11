@@ -70,7 +70,7 @@
 				</div>
 				<div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 rground">
 					<div class="pt-4 textcenter"> 
-							<input id="insertPayt" name="insertPayt" value="0" onchange="yourPayment();" size="36"> 
+							<input id="insertPayt" name="insertPayt" value="0" onchange="yourPayment();"> 
 							<br /> <img src="insert-payt.jpg" /> &nbsp; &nbsp; <img src="vivo-payt.jpg" /> <br /> 
 						<br /> <h3> ВНЕСИТЕ &nbsp; ОПЛАТУ </h3> 
 					</div>
