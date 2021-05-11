@@ -1,2 +1,1 @@
-# jscoffee
-# "jscoffee" it's a javascript a coffee-automat
+# jscoffee it's a javascript a coffee-automat 
