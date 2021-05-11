@@ -1,0 +1,130 @@
+
+body { 
+	margin:0;
+	padding:0;
+	font-size:14pt;
+	font-weight:400;
+	background:black;
+	text-align:left;
+	}
+.rground { 
+	background:firebrick !important;
+		}
+.gground { 
+	background:grey !important;
+		}
+.bground { 
+	background:black !important;
+		}
+.container { 
+	text-align: left;
+	border: 2px solid gray;
+		}
+.container-fluid { 
+	text-align:left;
+	border: 2px solid gray;
+		}
+ .row { 
+	text-align:left;
+	border: 2px solid gray;
+		}
+ .col { 
+	text-align:left;
+	border: 2px solid gray;
+		}
+.whitebord {
+	border: 6px solid white;
+		}
+.leftalign { 
+	text-align:left;
+		}
+.textcenter { 
+	text-align:center;
+		}
+.aitalic {
+	font-style: italic;
+	font-weight: lighter;
+	}
+.nobttm {
+	padding-top:5px !important;
+	padding-bottom:0 !important;
+	bottom:0 !important;
+		}
+.screen {
+	background: lightgreen;
+	box-shadow:0 0 25px palegreen;
+	font-variant: small-caps;
+	font-family: Courier, monospace;
+	font-weight: lighter;
+	border-radius:15px;
+	padding: 10px;
+	opacity: 0.9;
+	}
+.coffee {
+	color: aquamarine;
+	font-size: 16pt;
+	}
+.cupsof {
+	color: tan;
+	}
+.cupson {
+	color: skyblue;
+	}
+.noneWallet {
+	display: block;
+	position: fixed;
+	bottom:2px;
+	left:2px;
+	}
+.blockWallet {
+	display: none;
+	position: fixed;
+	bottom:2px;
+	left:2px;
+	}
+.redButton {
+	background:firebrick;
+	position: fixed;
+	border-radius:10px;
+	z-index:99999;
+	bottom:2px;
+	left:2px;
+	}
+.slowWallet {
+	display:block;
+	position: fixed;
+	z-index:99990;
+	bottom:5px;
+	left:5px;	
+	}
+.viewCache {
+	display: none;
+	position: fixed;
+	z-index:100000;
+	bottom:20px;
+	left:10px;	
+	}
+.thebest {
+white-space: nowrap;
+font-style: italic;
+}
+.zed-up:hover {
+	z-index:100100;
+}
+.ininput {
+	display:inline-block;
+	}
+.coffeedone {
+	display: block;
+	position: absolute;
+	z-index:99900;
+	width: 18%;
+	left: 41%;
+	top: 46%;
+	}
+.coinChanges {
+	display: inline-block;
+	position: absolute;
+	top:170px;
+	right:110px;
+	}
