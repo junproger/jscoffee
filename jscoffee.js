@@ -143,8 +143,8 @@ function getChange() {
 		}
 // Функция готового кофе
 function doneCoffee() {
-		document.querySelector('#getCoffee').src = '13-item-13.png';
 		document.querySelector('#doneCoffee').src = 'alegria-coffee.png';
+		document.querySelector('#getCoffee').src = '13-item-13.png';
 		}
 //Функция очистки переменных
 function clearFunction() {
