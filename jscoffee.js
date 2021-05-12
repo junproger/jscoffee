@@ -93,18 +93,18 @@ function offerCoffee() {
 						if (costCoffee<=paytCoffee) {
 								outchanges = paytCoffee - costCoffee;
 								document.querySelector('#yourChange').textContent = outchanges + ' rub';
-								document.querySelector('#getCoffee').src = '03-item-03.png';
+								document.querySelector('#trayCoffee').src = '03-item-03.png';
 								console.log('Кофе готовится');
 								console.log('Your change ' + outchanges);
 								setTimeout(doneCoffee, 5000);
 								arrPayment = [0, ];
 								getChange()
-								} else {
-										let more = costCoffee - paytCoffee;
-										document.querySelector('#orderStatus').textContent = 'Внесите ещё ' + more + ' rub';
-										console.log('Внесите ещё ' + more + 'rub');
-										sumPayment = 0;
-				}
+						} else {
+									let more = costCoffee - paytCoffee;
+									document.querySelector('#orderStatus').textContent = 'Внесите ещё ' + more + ' rub';
+									console.log('Внесите ещё ' + more + 'rub');
+									sumPayment = 0;
+							}
 		}
 // Функция внесения оплаты за кофе
 function yourPayment() {
@@ -123,33 +123,47 @@ function yourPayment() {
 		}
 //Функция выдачи сдачи
 function getChange() {
-		if (outchanges == 0) return false;
-			else if (outchanges >= 200) changecoin = 200;
-			else if (outchanges >= 100) changecoin = 100;
-			else if (outchanges >= 50) changecoin = 50;
-			else if (outchanges >= 10) changecoin = 10;
-			document.querySelector('#boxChanges').innerHTML += `<img onclick='this.style.display="none";' class="coinChanges" src="${changecoin}_rubles.png">`;
-			console.log('changecoin = ' + changecoin);
-			outchanges -= changecoin; 
-				if (outchanges !== 0) {
-				getChange() 
+		let sizeTrayChange = document.querySelector('#trayChange');
+		let coordTrayChange = sizeTrayChange.getBoundingClientRect();
+				console.log('trayWidth ' + sizeTrayChange.offsetWidth);
+				console.log('trayHeight ' + sizeTrayChange.offsetHeight);
+				console.log(sizeTrayChange.getBoundingClientRect());
+				console.log('trayTop ' + coordTrayChange.top);
+				console.log('trayLeft ' + coordTrayChange.left);
+		let widthTrayChange = trayRandom(150, sizeTrayChange.offsetWidth);
+				console.log('widthTrayChange: ' + widthTrayChange);
+				if (outchanges < 9) return false;
+					else if (outchanges >= 200) changecoin = 200;
+					else if (outchanges >= 100) changecoin = 100;
+					else if (outchanges >= 50) changecoin = 50;
+					else if (outchanges >= 10) changecoin = 10;
+					document.querySelector('#trayChange').innerHTML += `<img onclick='this.style.display="none";' style="left:${widthTrayChange}px; " class="coinChanges" src="${changecoin}_rubles.png">`;
+					console.log('changecoin = ' + changecoin);
+					outchanges -= changecoin; 
+						if (outchanges !== 0) {
+						getChange() 
+						}
+							else {
+							outchanges = 0;
+							changecoin = 0;
+							console.log(outchanges);
+							console.log(changecoin);
+							}
 				}
-					else {
-					outchanges = 0;
-					changecoin = 0;
-					console.log(outchanges);
-					console.log(changecoin);
-					}
-		}
+function trayRandom(min,max) {
+		console.log('min: ' + min + ', ' + 'max: ' + max);
+		return Math.random()*(max-min)+50;
+}
 // Функция готового кофе
 function doneCoffee() {
 		document.querySelector('#doneCoffee').src = 'alegria-coffee.png';
-		document.querySelector('#getCoffee').src = '13-item-13.png';
+		document.querySelector('#trayCoffee').src = '13-item-13.png';
 		}
 //Функция очистки переменных
 function clearFunction() {
+		document.querySelector('#doneCoffee').src = '';
 		document.querySelector('#orderStatus').textContent = 'Приходите снова!';
-		document.querySelector('#boxChanges').innerHTML = '<img src="get-change.png" width="100%">';
+		document.querySelector('#trayChange').innerHTML = '<img src="get-change.png" width="100%">';
 		document.querySelector('#insertPayt').value = '0';
 		document.querySelector('#yourChange').textContent = '';
 		document.querySelector('#yourPayment').textContent = '';
