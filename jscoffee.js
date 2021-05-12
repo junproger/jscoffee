@@ -44,6 +44,7 @@ function selectCoffee(indx) {
 		arrayCups.shift();
 		document.querySelector('#yourOrdered').textContent = setCoffee[1] + ', ' + setCoffee[2] + '.';
 		document.querySelector('#yourInvoice').textContent = setCoffee[3] + ',0 ' + 'rub.';
+		document.querySelector('#orderStatus').textContent = 'Внесите оплату';
 				console.log('Ваш заказ: ' + setCoffee[1] + ', ' + setCoffee[2]);
 				console.log('К оплате: ' + setCoffee[3] + '.0' + 'rub.');
 				console.log(setCoffee);
@@ -94,6 +95,7 @@ function offerCoffee() {
 								outchanges = paytCoffee - costCoffee;
 								document.querySelector('#yourChange').textContent = outchanges + ' rub';
 								document.querySelector('#trayCoffee').src = '03-item-03.png';
+								document.querySelector('#orderStatus').textContent = 'Кофе готовится';
 								console.log('Кофе готовится');
 								console.log('Your change ' + outchanges);
 								setTimeout(doneCoffee, 5000);
@@ -158,6 +160,7 @@ function trayRandom(min,max) {
 function doneCoffee() {
 		document.querySelector('#doneCoffee').src = 'alegria-coffee.png';
 		document.querySelector('#trayCoffee').src = '13-item-13.png';
+		document.querySelector('#orderStatus').textContent = 'Ваш кофе готов';
 		}
 //Функция очистки переменных
 function clearFunction() {
