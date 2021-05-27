@@ -25,16 +25,28 @@ const someCache = [
 		'200-rubles.png',
 		'500-rubles.png'];
 let yourCache = [
-		'2000-visagold-rubles.png',
 		'1000-master-rubles.png',
+		'2000-visagold-rubles.png',
 		'5000-bitcoin-rubles.png'];
 let arrPayment = [0, ];
 let sumPayment = 0;
 let outchanges = 0;
 let changecoin = 0;
+// Количество наличных без карт
+let cachetotal = 0;
 // Переменные для эффекта оплаты
-let rubles = document.querySelectorAll("img[src$='-rubles.png']");
-let cardes = document.querySelectorAll("img[src$='-payt.jpg'");
+let clicks = 0;
+let payMoney = 0;
+let rubles = document.querySelectorAll('img[data-payt-value]');
+let insertRubl = document.querySelector('#insertRubl');
+let insertCard = document.querySelector('#insertCard');
+//Определениеи координат insert
+console.log(insertRubl.getBoundingClientRect());
+console.log(insertCard.getBoundingClientRect());
+//Отключение d&d обработчика
+			document.ondragstart = function() {
+					return false;
+			}
 // Функция выбора для кофе
 function selectCoffee(indx) {
 		setCoffee = arraysCoffee[indx];
@@ -67,21 +79,22 @@ function takeCache() {
 		document.querySelector('#cache0').src = yourCache[0];
 		document.querySelector('#cache1').src = yourCache[1];
 		document.querySelector('#cache2').src = yourCache[2];
-		document.querySelector('#cache3').setAttribute("data-set", parseInt(yourCache[3]));
+		document.querySelector('#cache3').setAttribute("data-payt-value", parseInt(yourCache[3]));
 				document.querySelector('#cache3').src = yourCache[3];
-		document.querySelector('#cache4').setAttribute("data-set", parseInt(yourCache[4]));
+		document.querySelector('#cache4').setAttribute("data-payt-value", parseInt(yourCache[4]));
 				document.querySelector('#cache4').src = yourCache[4];
-		document.querySelector('#cache5').setAttribute("data-set", parseInt(yourCache[5]));
+		document.querySelector('#cache5').setAttribute("data-payt-value", parseInt(yourCache[5]));
 				document.querySelector('#cache5').src = yourCache[5];
-		document.querySelector('#cache6').setAttribute("data-set", parseInt(yourCache[6]));
+		document.querySelector('#cache6').setAttribute("data-payt-value", parseInt(yourCache[6]));
 				document.querySelector('#cache6').src = yourCache[6];
-		document.querySelector('#cache7').setAttribute("data-set", parseInt(yourCache[7]));
+		document.querySelector('#cache7').setAttribute("data-payt-value", parseInt(yourCache[7]));
 				document.querySelector('#cache7').src = yourCache[7];
+
 		}
 function clearWallet() {
 		yourCache = [
-			'2000-visagold-rubles.png',
 			'1000-master-rubles.png',
+			'2000-visagold-rubles.png',
 			'5000-bitcoin-rubles.png']; // clear cache
 						console.log(yourCache); // check yourCache
 		}
@@ -110,8 +123,7 @@ function offerCoffee() {
 		}
 // Функция внесения оплаты за кофе
 function yourPayment() {
-		let payMoney = parseInt(document.querySelector('#insertPayt').value);
-				if (payMoney >= 1000) payMoney = Number(setCoffee[3]);
+				if (payMoney >= 600) payMoney = Number(setCoffee[3]);
 				console.log(payMoney);
 		arrPayment = arrPayment.concat(payMoney);
 				for (i=0; i<arrPayment.length; i++) {
@@ -156,6 +168,51 @@ function trayRandom(min,max) {
 		console.log('min: ' + min + ', ' + 'max: ' + max);
 		return Math.random()*(max-min)+50;
 }
+
+//Функция эффекта оплаты налом
+	rubles.forEach(function(rubl) {
+	console.log('forEach ' + rubl)
+	rubl.onclick = function() {
+	clicks += 1;
+	console.log('Click to rubl');
+	if (clicks% 2 !== 0) {
+		rubl.addEventListener('mousemove', eventHandler);
+				rubl.className = 'cachemove'; //Moving class for cache
+			console.log(clicks + 'odd');
+		}
+	if (clicks% 2 == 0) {
+		rubl.removeEventListener('mousemove', eventHandler);
+				rubl.className = 'cacheup'; //Default class for cache
+		console.log(clicks + 'even');
+		} 
+	}
+		
+function eventHandler(event) {
+		let x = event.clientX - 64;
+		let y = event.clientY - 74;
+		
+		rubl.style.top = y + 'px';
+		rubl.style.left = x + 'px';
+		
+		rubl.style.cursor = 'pointer';
+		rubl.style.position = 'fixed';
+		if (Number(rubl.dataset.paytValue) > 600) {
+		document.querySelector('#orderStatus').textContent = 'Ошибка платежа!'
+		return false;
+		} else if (x >= insertRubl.getBoundingClientRect().right-150 && y <= insertRubl.getBoundingClientRect().bottom-110 ) {
+		rubl.style.display = 'none';
+		payMoney = Number(rubl.dataset.paytValue);
+		console.log('rubl.dataset ' + rubl.dataset.paytValue);
+		console.log('let payMoney ' + payMoney);
+		let postclick = new Event('click');
+		rubl.dispatchEvent(postclick);
+		yourPayment();
+		}
+	}
+});
+
+//Функция эффекта оплаты картой
+
 // Функция готового кофе
 function doneCoffee() {
 		document.querySelector('#doneCoffee').src = 'alegria-coffee.png';
@@ -163,11 +220,10 @@ function doneCoffee() {
 		document.querySelector('#orderStatus').textContent = 'Ваш кофе готов';
 		}
 //Функция очистки переменных
-function clearFunction() {
+function cleanFunction() {
 		document.querySelector('#doneCoffee').src = '';
 		document.querySelector('#orderStatus').textContent = 'Приходите снова!';
 		document.querySelector('#trayChange').innerHTML = '<img src="get-change.png" width="100%">';
-		document.querySelector('#insertPayt').value = '0';
 		document.querySelector('#yourChange').textContent = '';
 		document.querySelector('#yourPayment').textContent = '';
 		document.querySelector('#yourInvoice').textContent = '';
@@ -179,4 +235,6 @@ function clearFunction() {
 		arrPayment = [0, ];
 		arrayCups = ['null-cup', ];
 		setCoffee =[];
+		payMoney = 0;
+		console.log('all vars is clean');
 		}
