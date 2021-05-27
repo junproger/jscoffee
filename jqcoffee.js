@@ -12,4 +12,3 @@ $ ("button[id='closeWallet']").on('click', () => {
 		$ ("div[id='walletWallet']").fadeOut ('slow');
 		$ ("div[id='noneWallet']").fadeIn ('slow');
 				} );
-				
