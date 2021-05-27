@@ -54,10 +54,10 @@
 				<div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
 					<div class="screen px-3 my-3">
 						<h5 class="textcenter"> <span id="orderStatus"> Добро пожаловать! </span> </h5>
-						<p> >> Ваш заказ: <span id="yourOrdered"></span></p>
-						<p> >> К оплате: <span id="yourInvoice"></span></p>
-						<p> >> Внесено: <span id="yourPayment"></span></p>
-						<p> >> Для сдачи: <span id="yourChange"></span></p>
+						<p> Ваш заказ: <span id="yourOrdered"></span> </p>
+						<p> К оплате: <span id="yourInvoice"></span> </p>
+						<p> Внесено: <span id="yourPayment"></span> </p>
+						<p> Для сдачи: <span id="yourChange"></span> </p>
 					</div>
 				</div>
 			</div>
@@ -65,13 +65,13 @@
 				<div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 nobttm">
 					<div class="nobttm">
 						<p class="whitebord"><img id="trayCoffee" src="13-item-13.png" width="100%">
-						<img onclick="clearFunction()" id="doneCoffee" class="coffeedone" src="" width="18%"></p>
+						<img onclick="cleanFunction()" id="doneCoffee" class="coffeedone" src="" width="18%"></p>
 					</div>
 				</div>
 				<div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 rground">
 					<div class="pt-4 textcenter"> 
-							<input id="insertPayt" name="insertPayt" value="0" onchange="yourPayment();"> 
-							<br /><img src="insert-payt.jpg" /> &nbsp; <img src="vivo-payt.jpg" /> &nbsp; <br /> 
+							<br /><img id="insertRubl" src="insert-payt.jpg" /> &nbsp; 
+							<img id="insertCard" src="vivo-payt.jpg" /> &nbsp; <br /> 
 						<br /> <h3> ВНЕСИТЕ &nbsp; ОПЛАТУ </h3> 
 					</div>
 				</div>
@@ -102,21 +102,21 @@
 					</div>
 					<!-- view Cache -->
 						<div id="viewCache" name="viewCache" class="viewCache">
-							<p> <img data-set="" class="zed-up" style="position: absolute; bottom:160px;" id="cache7" src="" /> 
-							<img data-set="" class="zed-up" style="position: absolute; left:70px; bottom:160px;" id="cache6" src="" /> 
-							<img data-set="" class="zed-up" style="position: absolute; left:140px; bottom:160px;" id="cache5" src="" /> 
-							<img data-set="" class="zed-up" style="position: absolute; left:210px; bottom:160px;" id="cache4" src="" /> 
-							<img data-set="" class="zed-up" style="position: absolute; left:280px; bottom:160px;" id="cache3" src="" /> </p>
-							<p> <img data-set="1000" class="zed-up" style="position: absolute; bottom:20px;" id="cache1" src="" /> 
-							<img data-set="1000" class="zed-up" style="position: absolute; left:100px; bottom:20px;" id="cache0" src="" /> 
-							<img data-set="1000" class="zed-up" style="position: absolute; left:190px; bottom:20px;" id="cache2" src="" /> </p>
+							<p> <img data-payt-value="" class="cacheup" style="bottom: 172px; position:fixed;" id="cache7" src="" /> 
+							<img data-payt-value="" class="cacheup" style="left:80px; bottom: 172px; position:fixed;" id="cache6" src="" /> 
+							<img data-payt-value="" class="cacheup" style="left:155px; bottom: 172px; position:fixed;" id="cache5" src="" /> 
+							<img data-payt-value="" class="cacheup" style="left:230px; bottom: 172px; position:fixed;" id="cache4" src="" /> 
+							<img data-payt-value="" class="cacheup" style="left:305px; bottom: 172px; position:fixed;" id="cache3" src="" /> </p>
+							<p> <img data-payt-value="1000" class="cacheup" style="bottom: 35px; position:fixed;" id="cache0" src="" /> 
+							<img data-payt-value="2000" class="cacheup" style="left:100px; bottom: 35px; position:fixed;" id="cache1" src="" /> 
+							<img data-payt-value="5000" class="cacheup" style="left:200px; bottom: 35px; position:fixed;" id="cache2" src="" /> </p>
 						</div>
 					<!-- close wallet -->
 					<div id="walletWallet" name="walletWallet" class="blockWallet">
-						<button id="closeWallet" name="closeWallet" class="redButton btn-red text-light"  onclick="clearWallet();">Закрыть кошелёк</button>
 						<div id="yourWallet" name="yourWallet" class="slowWallet">
 							<img src="018_wallet_open_2.png">
 						</div>
+						<button id="closeWallet" name="closeWallet" class="redButton btn-red text-light" style="z-index:999999;" onclick="clearWallet();">Закрыть кошелёк</button>
 					</div> 
 				</div>
 			</div>
@@ -129,7 +129,7 @@
 		<script>
 		</script>
 		<!-- // Coffee script -->
-			<!-- Работу выполнил Сергей Токарев, учащийся курса frontend-разработки, группы 0407-гз, центра «Профессионал» -->
+			<!-- Работу выполнил Сергей Токарев, учащийся курса frontend-разработки -->
 				<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 	</body>
 </html>
