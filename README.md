@@ -3,4 +3,5 @@
 # 3) the link to frontend of the coffee-automat javascript: 
 # http://end407.byethost7.com/jscoffee/jscoffee.html
 # 4) 2021.05.12 Added function of changes money, with random coordinate
+# 5) Added drag&drop effect of payment (without paypass)
 #
