@@ -176,12 +176,12 @@ function trayRandom(min,max) {
 	clicks += 1;
 	console.log('Click to rubl');
 	if (clicks% 2 !== 0) {
-		rubl.addEventListener('mousemove', eventHandler);
+		document.addEventListener('mousemove', eventHandler);
 				rubl.className = 'cachemove'; //Moving class for cache
 			console.log(clicks + 'odd');
 		}
 	if (clicks% 2 == 0) {
-		rubl.removeEventListener('mousemove', eventHandler);
+		document.removeEventListener('mousemove', eventHandler);
 				rubl.className = 'cacheup'; //Default class for cache
 		console.log(clicks + 'even');
 		} 
