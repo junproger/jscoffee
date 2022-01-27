@@ -197,7 +197,7 @@ function eventHandler(event) {
 		rubl.style.cursor = 'pointer';
 		rubl.style.position = 'fixed';
 		if (Number(rubl.dataset.paytValue) > 600) {
-		document.querySelector('#orderStatus').textContent = 'Ошибка платежа!'
+		document.querySelector('#orderStatus').textContent = 'PAYPASS НЕ РАБОТАЕТ!'
 		return false;
 		} else if (x >= insertRubl.getBoundingClientRect().right-150 && y <= insertRubl.getBoundingClientRect().bottom-110 ) {
 		rubl.style.display = 'none';
